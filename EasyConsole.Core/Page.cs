@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace EasyConsole
+namespace EasyConsole.Core
 {
     public abstract class Page
     {
@@ -11,23 +11,23 @@ namespace EasyConsole
 
         public Page(string title, Program program)
         {
-            Title = title;
-            Program = program;
+            this.Title = title;
+            this.Program = program;
         }
 
         public virtual void Display()
         {
-            if (Program.History.Count > 1 && Program.BreadcrumbHeader)
+            if (this.Program.History.Count > 1 && this.Program.BreadcrumbHeader)
             {
                 string breadcrumb = null;
-                foreach (var title in Program.History.Select((page) => page.Title).Reverse())
+                foreach (var title in this.Program.History.Select((page) => page.Title).Reverse())
                     breadcrumb += title + " > ";
                 breadcrumb = breadcrumb.Remove(breadcrumb.Length - 3);
                 Console.WriteLine(breadcrumb);
             }
             else
             {
-                Console.WriteLine(Title);
+                Console.WriteLine(this.Title);
             }
             Console.WriteLine("---");
         }

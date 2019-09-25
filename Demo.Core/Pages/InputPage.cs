@@ -1,7 +1,7 @@
-﻿using EasyConsole;
-using System;
+﻿using System;
+using EasyConsole.Core;
 
-namespace Demo.Pages
+namespace Demo.Core.Pages
 {
     class InputPage : Page
     {
@@ -18,7 +18,7 @@ namespace Demo.Pages
             Output.WriteLine(ConsoleColor.Green, "You selected {0}", input);
 
             Input.ReadString("Press [Enter] to navigate home");
-            Program.NavigateHome();
+            this.Program.NavigateHome();
         }
     }
 

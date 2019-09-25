@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace EasyConsole
+namespace EasyConsole.Core
 {
     public static class Input
     {

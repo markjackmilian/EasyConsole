@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 
-namespace EasyConsole
+namespace EasyConsole.Core
 {
     public abstract class Program
     {
@@ -15,7 +15,7 @@ namespace EasyConsole
         {
             get
             {
-                return (History.Any()) ? History.Peek() : null;
+                return (this.History.Any()) ? this.History.Peek() : null;
             }
         }
 
@@ -23,23 +23,23 @@ namespace EasyConsole
 
         public Stack<Page> History { get; private set; }
 
-        public bool NavigationEnabled { get { return History.Count > 1; } }
+        public bool NavigationEnabled { get { return this.History.Count > 1; } }
 
         protected Program(string title, bool breadcrumbHeader)
         {
-            Title = title;
-            Pages = new Dictionary<Type, Page>();
-            History = new Stack<Page>();
-            BreadcrumbHeader = breadcrumbHeader;
+            this.Title = title;
+            this.Pages = new Dictionary<Type, Page>();
+            this.History = new Stack<Page>();
+            this.BreadcrumbHeader = breadcrumbHeader;
         }
 
         public virtual void Run()
         {
             try
             {
-                Console.Title = Title;
+                Console.Title = this.Title;
 
-                CurrentPage.Display();
+                this.CurrentPage.Display();
             }
             catch (Exception e)
             {
@@ -58,57 +58,57 @@ namespace EasyConsole
         {
             Type pageType = page.GetType();
 
-            if (Pages.ContainsKey(pageType))
-                Pages[pageType] = page;
+            if (this.Pages.ContainsKey(pageType))
+                this.Pages[pageType] = page;
             else
-                Pages.Add(pageType, page);
+                this.Pages.Add(pageType, page);
         }
 
         public void NavigateHome()
         {
-            while (History.Count > 1)
-                History.Pop();
+            while (this.History.Count > 1)
+                this.History.Pop();
 
             Console.Clear();
-            CurrentPage.Display();
+            this.CurrentPage.Display();
         }
 
         public T SetPage<T>() where T : Page
         {
             Type pageType = typeof(T);
 
-            if (CurrentPage != null && CurrentPage.GetType() == pageType)
-                return CurrentPage as T;
+            if (this.CurrentPage != null && this.CurrentPage.GetType() == pageType)
+                return this.CurrentPage as T;
 
             // leave the current page
 
             // select the new page
             Page nextPage;
-            if (!Pages.TryGetValue(pageType, out nextPage))
+            if (!this.Pages.TryGetValue(pageType, out nextPage))
                 throw new KeyNotFoundException("The given page \"{0}\" was not present in the program".Format(pageType));
 
             // enter the new page
-            History.Push(nextPage);
+            this.History.Push(nextPage);
 
-            return CurrentPage as T;
+            return this.CurrentPage as T;
         }
 
         public T NavigateTo<T>() where T : Page
         {
-            SetPage<T>();
+            this.SetPage<T>();
 
             Console.Clear();
-            CurrentPage.Display();
-            return CurrentPage as T;
+            this.CurrentPage.Display();
+            return this.CurrentPage as T;
         }
 
         public Page NavigateBack()
         {
-            History.Pop();
+            this.History.Pop();
 
             Console.Clear();
-            CurrentPage.Display();
-            return CurrentPage;
+            this.CurrentPage.Display();
+            return this.CurrentPage;
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace EasyConsole
+﻿namespace EasyConsole.Core
 {
     public abstract class MenuPage : Page
     {
@@ -7,20 +7,20 @@
         public MenuPage(string title, Program program, params Option[] options)
             : base(title, program)
         {
-            Menu = new Menu();
+            this.Menu = new Menu();
 
             foreach (var option in options)
-                Menu.Add(option);
+                this.Menu.Add(option);
         }
 
         public override void Display()
         {
             base.Display();
 
-            if (Program.NavigationEnabled && !Menu.Contains("Go back"))
-                Menu.Add("Go back", () => { Program.NavigateBack(); });
+            if (this.Program.NavigationEnabled && !this.Menu.Contains("Go back"))
+                this.Menu.Add("Go back", () => { this.Program.NavigateBack(); });
 
-            Menu.Display();
+            this.Menu.Display();
         }
     }
 }

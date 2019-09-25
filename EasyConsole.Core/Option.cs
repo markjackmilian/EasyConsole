@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace EasyConsole
+namespace EasyConsole.Core
 {
     public class Option
     {
@@ -9,13 +9,13 @@ namespace EasyConsole
 
         public Option(string name, Action callback)
         {
-            Name = name;
-            Callback = callback;
+            this.Name = name;
+            this.Callback = callback;
         }
 
         public override string ToString()
         {
-            return Name;
+            return this.Name;
         }
     }
 }

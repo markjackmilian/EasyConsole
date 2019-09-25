@@ -1,6 +1,6 @@
-﻿using EasyConsole;
+﻿using EasyConsole.Core;
 
-namespace Demo.Pages
+namespace Demo.Core.Pages
 {
     class Page1B : Page
     {
@@ -16,7 +16,7 @@ namespace Demo.Pages
             Output.WriteLine("Hello from Page 1B");
 
             Input.ReadString("Press [Enter] to navigate home");
-            Program.NavigateHome();
+            this.Program.NavigateHome();
         }
     }
 }
