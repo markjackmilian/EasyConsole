@@ -14,7 +14,7 @@ variables:
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
   project: "EasyConsole.Core/EasyConsole.Core.csproj"
-  publishFolder: "EasyConsole.Core/bin/$(buildPlatform)/$(buildConfiguration)/netstandard2.0"
+  publishFolder: "EasyConsole.Core/bin/$(buildConfiguration)/netstandard2.0"
   
 steps:
 - task: NuGetToolInstaller@1
@@ -31,7 +31,7 @@ steps:
 - task: VSBuild@1
   inputs:
     solution: '$(project)'
-    msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:DesktopBuildPackageLocation="$(build.artifactStagingDirectory)\WebApp.zip" /p:DeployIisAppPath="Default Web Site"'
+    msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:DesktopBuildPackageLocation="$(build.artifactStagingDirectory)\WebApp.zip" /p:DeployIisAppPath="Default Web Site" /p:output="$(publishFolder)"'
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
