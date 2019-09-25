@@ -21,10 +21,13 @@ stages:
          runOnce:
           deploy:
             steps:
+
             - task: NuGetCommand@2
               inputs:
-                command: 'pack'
-                packagesToPack: '{{project}}'
+                command: 'push'
+                packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
+                nuGetFeedType: 'internal'
+                publishVstsFeed: '94721b6a-21f8-4ba5-87c8-a7798d924514'
                 versioningScheme: 'byBuildNumber'
 
 
