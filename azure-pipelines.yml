@@ -35,10 +35,17 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
+- task: NuGetCommand@2
+  inputs:
+    command: 'pack'
+    packagesToPack: '$(project)'
+    versioningScheme: 'byBuildNumber'
+
 - task: PublishBuildArtifacts@1
   inputs:
-    PathtoPublish: '$(publishFolder)'
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'drop'
     publishLocation: 'Container'
+
 
 
