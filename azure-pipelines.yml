@@ -14,6 +14,7 @@ variables:
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
   project: "EasyConsole.Core/EasyConsole.Core.csproj"
+  publishFolder: "EasyConsole/EasyConsole.Core/bin/$(buildConfiguration)/netstandard2.0"
 
 steps:
 - task: NuGetToolInstaller@1
@@ -36,7 +37,7 @@ steps:
 
 - task: PublishBuildArtifacts@1
   inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    PathtoPublish: '$(publishFolder)'
     ArtifactName: 'drop'
     publishLocation: 'Container'
 
