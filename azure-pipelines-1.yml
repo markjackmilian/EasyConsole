@@ -22,14 +22,3 @@ stages:
                 nuGetFeedType: 'internal'
                 publishVstsFeed: '94721b6a-21f8-4ba5-87c8-a7798d924514'
                 versioningScheme: 'byBuildNumber'
-
-
-- stage: nuget
-  jobs:
-  - job: B1
-  - deployment: dedede
-    pool:
-      name: "Hosted"
-      environment: 'pub'
-
-
