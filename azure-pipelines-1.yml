@@ -9,6 +9,7 @@ stages:
     - deployment: foewinfw
       pool:
         name: "Hosted"
+        environment: 'dev'
       strategy:
          runOnce:
           deploy:
@@ -26,6 +27,9 @@ stages:
 - stage: nuget
   jobs:
   - job: B1
-  - job: B2
+  - deployment: dedede
+    pool:
+      name: "Hosted"
+      environment: 'pub'
 
 
