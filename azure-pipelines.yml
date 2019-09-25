@@ -14,7 +14,7 @@ variables:
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
   project: "EasyConsole.Core/EasyConsole.Core.csproj"
-  publishFolder: "EasyConsole/EasyConsole.Core/bin/$(buildPlatform)/$(buildConfiguration)/netstandard2.0"
+  publishFolder: "EasyConsole.Core/bin/$(buildPlatform)/$(buildConfiguration)/netstandard2.0"
   
 steps:
 - task: NuGetToolInstaller@1
