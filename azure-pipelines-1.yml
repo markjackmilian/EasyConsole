@@ -1,23 +1,36 @@
-# ASP.NET
-# Build and test ASP.NET projects.
-# Add steps that publish symbols, save build artifacts, deploy, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/apps/aspnet/build-aspnet-4
-
 trigger:
 - master
-
-pool:
-  vmImage: 'windows-latest'
 
 variables:
   solution: '**/*.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
+  project: "EasyConsole.Core/EasyConsole.Core.csproj"
+
 
 
 stages:
 - stage: feed
+  displayName: publish nuget to feed
   jobs:
+    - job: publish
+    - deployment: foewinfw
+      pool:
+        name: "Hosted"
+      strategy:
+         runOnce:
+          deploy:
+            steps:
+            - task: NuGetCommand@2
+              inputs:
+                command: 'pack'
+                packagesToPack: '{{project}}'
+                versioningScheme: 'byBuildNumber'
+
+
+
+   
+
     
 
 - stage: nuget
