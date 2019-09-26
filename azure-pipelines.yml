@@ -13,8 +13,8 @@ variables:
   solution: '**/*.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
-  project: "EasyConsole.Core/EasyConsole.Core.csproj"
-  publishFolder: "EasyConsole.Core/bin/$(buildConfiguration)/netstandard2.0"
+  project: "EasyConsole.Core.Plus/EasyConsole.Core.Plus.csproj"
+  publishFolder: "EasyConsole.Core.Plus/bin/$(buildConfiguration)/netstandard2.0"
   
 steps:
 - task: NuGetToolInstaller@1
