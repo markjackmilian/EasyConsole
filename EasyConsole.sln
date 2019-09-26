@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo", "Demo\Demo.csproj", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{FF38D50A-E860-4FE3-98B5-A18B6A0C3D34}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyConsole.Core", "EasyConsole.Core\EasyConsole.Core.csproj", "{C9A49915-5C25-4771-86E2-F283E6D68B9C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyConsole.Core.Plus", "EasyConsole.Core.Plus\EasyConsole.Core.Plus.csproj", "{C9A49915-5C25-4771-86E2-F283E6D68B9C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo.Core", "Demo.Core\Demo.Core.csproj", "{EDD26C48-E1C7-4AED-BAD9-20EA049A899A}"
 EndProject
