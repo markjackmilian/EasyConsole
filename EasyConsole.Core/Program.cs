@@ -33,13 +33,13 @@ namespace EasyConsole.Core
             this.BreadcrumbHeader = breadcrumbHeader;
         }
 
-        public virtual void Run()
+        public virtual void Run(object data = null)
         {
             try
             {
                 Console.Title = this.Title;
 
-                this.CurrentPage.Display();
+                this.CurrentPage.Display(data);
             }
             catch (Exception e)
             {
@@ -64,13 +64,13 @@ namespace EasyConsole.Core
                 this.Pages.Add(pageType, page);
         }
 
-        public void NavigateHome()
+        public void NavigateHome(object data = null)
         {
             while (this.History.Count > 1)
                 this.History.Pop();
 
             Console.Clear();
-            this.CurrentPage.Display();
+            this.CurrentPage.Display(data);
         }
 
         public T SetPage<T>() where T : Page
@@ -85,7 +85,7 @@ namespace EasyConsole.Core
             // select the new page
             Page nextPage;
             if (!this.Pages.TryGetValue(pageType, out nextPage))
-                throw new KeyNotFoundException("The given page \"{0}\" was not present in the program".Format(pageType));
+                throw new KeyNotFoundException($"The given page \"{pageType}\" was not present in the program");
 
             // enter the new page
             this.History.Push(nextPage);
@@ -93,21 +93,21 @@ namespace EasyConsole.Core
             return this.CurrentPage as T;
         }
 
-        public T NavigateTo<T>() where T : Page
+        public T NavigateTo<T>(object data = null) where T : Page
         {
             this.SetPage<T>();
 
             Console.Clear();
-            this.CurrentPage.Display();
+            this.CurrentPage.Display(data);
             return this.CurrentPage as T;
         }
 
-        public Page NavigateBack()
+        public Page NavigateBack(object data = null)
         {
             this.History.Pop();
 
             Console.Clear();
-            this.CurrentPage.Display();
+            this.CurrentPage.Display(data);
             return this.CurrentPage;
         }
     }

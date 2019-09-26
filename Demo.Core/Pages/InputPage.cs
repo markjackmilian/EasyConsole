@@ -10,9 +10,9 @@ namespace Demo.Core.Pages
         {
         }
 
-        public override void Display()
+        public override void Display(object data = null)
         {
-            base.Display();
+            base.Display(data);
 
             Fruit input = Input.ReadEnum<Fruit>("Select a fruit");
             Output.WriteLine(ConsoleColor.Green, "You selected {0}", input);

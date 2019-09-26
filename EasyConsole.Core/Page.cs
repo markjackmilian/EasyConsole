@@ -15,7 +15,7 @@ namespace EasyConsole.Core
             this.Program = program;
         }
 
-        public virtual void Display()
+        public virtual void Display(object data = null)
         {
             if (this.Program.History.Count > 1 && this.Program.BreadcrumbHeader)
             {
