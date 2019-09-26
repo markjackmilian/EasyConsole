@@ -1,4 +1,4 @@
-﻿namespace EasyConsole.Core
+﻿namespace EasyConsole.Core.Plus
 {
     public abstract class MenuPage : Page
     {
@@ -13,9 +13,9 @@
                 this.Menu.Add(option);
         }
 
-        public override void Display()
+        public override void Display(object data)
         {
-            base.Display();
+            base.Display(data);
 
             if (this.Program.NavigationEnabled && !this.Menu.Contains("Go back"))
                 this.Menu.Add("Go back", () => { this.Program.NavigateBack(); });

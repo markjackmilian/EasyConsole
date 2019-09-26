@@ -1,4 +1,6 @@
 ﻿using EasyConsole.Core;
+using EasyConsole.Core.Plus;
+using EasyConsole.Core.Plus.Classes;
 
 namespace Demo.Core.Pages
 {
@@ -9,6 +11,14 @@ namespace Demo.Core.Pages
                   new Option("Page 1A", () => program.NavigateTo<Page1A>()),
                   new Option("Page 1B", () => program.NavigateTo<Page1B>()))
         {
+        }
+
+        public override void Display(object data)
+        {
+            if(data.IsNotNull() && data.Is<string>())
+                data.Cast<string>().PromptSuccess();
+            
+            base.Display(data);
         }
     }
 }

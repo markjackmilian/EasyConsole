@@ -1,4 +1,5 @@
 ﻿using EasyConsole.Core;
+using EasyConsole.Core.Plus;
 
 namespace Demo.Core.Pages
 {
@@ -9,9 +10,9 @@ namespace Demo.Core.Pages
         {
         }
 
-        public override void Display()
+        public override void Display(object data = null)
         {
-            base.Display();
+            base.Display(data);
 
             Output.WriteLine("Hello from Page 2");
 

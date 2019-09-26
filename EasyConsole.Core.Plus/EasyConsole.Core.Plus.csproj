@@ -2,9 +2,9 @@
 
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
-        <Title>EasyConsole.Core</Title>
+        <Title>EasyConsole.Core.Plus</Title>
         <Authors>Marco Milani</Authors>
-        <Description>Fork of EasyConsole for .net core</Description>
+        <Description>Fork of EasyConsole for .net core with more features.</Description>
         <PackageProjectUrl>https://github.com/markjackmilian/EasyConsole</PackageProjectUrl>
         <RepositoryUrl>https://github.com/markjackmilian/EasyConsole</RepositoryUrl>
         <PackageTags>net core, easyconsole, console</PackageTags>
