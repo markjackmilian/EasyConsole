@@ -1,5 +1,6 @@
 ﻿using EasyConsole.Core;
-using EasyConsole.Core.Classes;
+using EasyConsole.Core.Plus;
+using EasyConsole.Core.Plus.Classes;
 
 namespace Demo.Core.Pages
 {

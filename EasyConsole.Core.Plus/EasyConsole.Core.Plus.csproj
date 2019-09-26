@@ -8,7 +8,6 @@
         <PackageProjectUrl>https://github.com/markjackmilian/EasyConsole</PackageProjectUrl>
         <RepositoryUrl>https://github.com/markjackmilian/EasyConsole</RepositoryUrl>
         <PackageTags>net core, easyconsole, console</PackageTags>
-        <RootNamespace>EasyConsole.Core</RootNamespace>
     </PropertyGroup>
 
 </Project>

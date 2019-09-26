@@ -1,4 +1,4 @@
-﻿namespace EasyConsole.Core
+﻿namespace EasyConsole.Core.Plus
 {
     public abstract class MenuPage : Page
     {

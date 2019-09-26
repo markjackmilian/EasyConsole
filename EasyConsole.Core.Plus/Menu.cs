@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace EasyConsole.Core
+namespace EasyConsole.Core.Plus
 {
     public class Menu
     {
