@@ -1,6 +1,6 @@
 using System;
 
-namespace EasyConsole.Core.Classes
+namespace EasyConsole.Core.Plus.Classes
 {
     public static class Extensions
     {
