@@ -15,6 +15,7 @@ variables:
   buildConfiguration: 'Release'
   project: "EasyConsole.Core.Plus/EasyConsole.Core.Plus.csproj"
   publishFolder: "EasyConsole.Core.Plus/bin/$(buildConfiguration)/netstandard2.0"
+  PackNumber: $(Build.BuildNumber)
   
 steps:
 - task: NuGetToolInstaller@1
@@ -40,7 +41,8 @@ steps:
   inputs:
     command: 'pack'
     packagesToPack: '$(project)'
-    versioningScheme: 'byBuildNumber'
+    versioningScheme: 'byEnvVar'
+    versionEnvVar: 'PackNumber'
 
 - task: PublishBuildArtifacts@1
   inputs:
