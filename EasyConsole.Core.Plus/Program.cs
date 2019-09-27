@@ -70,7 +70,7 @@ namespace EasyConsole.Core.Plus
                 this.History.Pop();
 
             Console.Clear();
-            this.CurrentPage.Display(data);
+            this.CurrentPage.DisplayBack(data);
         }
 
         public T SetPage<T>() where T : Page
@@ -107,7 +107,7 @@ namespace EasyConsole.Core.Plus
             this.History.Pop();
 
             Console.Clear();
-            this.CurrentPage.Display(data);
+            this.CurrentPage.DisplayBack(data);
             return this.CurrentPage;
         }
     }

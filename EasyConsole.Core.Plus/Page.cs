@@ -21,6 +21,16 @@ namespace EasyConsole.Core.Plus
 
         public virtual void Display(object data = null)
         {
+            this.DrawBreadCrumb();
+        }
+        
+        public virtual void DisplayBack(object data)
+        {
+            this.DrawBreadCrumb();
+        }
+
+        private void DrawBreadCrumb()
+        {
             if (this.Program.History.Count > 1 && this.Program.BreadcrumbHeader)
             {
                 string breadcrumb = null;
@@ -33,7 +43,11 @@ namespace EasyConsole.Core.Plus
             {
                 Console.WriteLine(this.Title);
             }
+
             Console.WriteLine("---");
         }
+
+
+       
     }
 }
