@@ -5,14 +5,18 @@ namespace EasyConsole.Core.Plus
 {
     public abstract class Page
     {
-        public string Title { get; private set; }
+        public string Title { get; protected set; }
 
         public Program Program { get; set; }
 
-        public Page(string title, Program program)
+        public Page(Program program)
+        {
+            this.Program = program;
+        }
+
+        public Page(string title, Program program) : this(program)
         {
             this.Title = title;
-            this.Program = program;
         }
 
         public virtual void Display(object data = null)
