@@ -29,24 +29,6 @@ namespace EasyConsole.Core.Plus.Classes
             Output.WriteLine(ConsoleColor.Green,text);
         }
 
-        public static bool IsNull(this object obj)
-        {
-            return obj == null;
-        }
-        
-        public static bool IsNotNull(this object obj)
-        {
-            return obj != null;
-        }
-
-        public static bool Is<T>(this object obj)
-        {
-            return obj is T;
-        }
-
-        public static T Cast<T>(this object obj)
-        {
-            return (T) obj;
-        }
+       
     }
 }

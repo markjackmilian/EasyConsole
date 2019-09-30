@@ -9,4 +9,8 @@
       <ProjectReference Include="..\EasyConsole.Core.Plus\EasyConsole.Core.Plus.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <PackageReference Include="mjm.nethelpers" Version="0.1.0-alpha.14" />
+    </ItemGroup>
+
 </Project>

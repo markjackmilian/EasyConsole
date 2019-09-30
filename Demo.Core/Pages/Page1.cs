@@ -1,6 +1,7 @@
 ﻿using EasyConsole.Core;
 using EasyConsole.Core.Plus;
 using EasyConsole.Core.Plus.Classes;
+using mjm.nethelpers.Extensions;
 
 namespace Demo.Core.Pages
 {
