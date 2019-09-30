@@ -19,7 +19,7 @@ namespace EasyConsole.Core.Plus
             }
         }
 
-        private Dictionary<Type, Page> Pages { get; set; }
+        private Dictionary<Type, Lazy<Page>> Pages { get; set; }
 
         public Stack<Page> History { get; private set; }
 
@@ -28,7 +28,7 @@ namespace EasyConsole.Core.Plus
         protected Program(string title, bool breadcrumbHeader)
         {
             this.Title = title;
-            this.Pages = new Dictionary<Type, Page>();
+            this.Pages = new Dictionary<Type, Lazy<Page>>();
             this.History = new Stack<Page>();
             this.BreadcrumbHeader = breadcrumbHeader;
         }
@@ -54,14 +54,14 @@ namespace EasyConsole.Core.Plus
             }
         }
 
-        public void AddPage(Page page)
+        public void AddPage<T>(Func<T> page) where T : Page
         {
-            Type pageType = page.GetType();
-
+            var pageType = typeof(T);
+            
             if (this.Pages.ContainsKey(pageType))
-                this.Pages[pageType] = page;
+                this.Pages[pageType] = new Lazy<Page>(page);
             else
-                this.Pages.Add(pageType, page);
+                this.Pages.Add(pageType, new Lazy<Page>(page));
         }
 
         public void NavigateHome(object data = null)
@@ -75,7 +75,7 @@ namespace EasyConsole.Core.Plus
 
         public T SetPage<T>() where T : Page
         {
-            Type pageType = typeof(T);
+            var pageType = typeof(T);
 
             if (this.CurrentPage != null && this.CurrentPage.GetType() == pageType)
                 return this.CurrentPage as T;
@@ -83,12 +83,11 @@ namespace EasyConsole.Core.Plus
             // leave the current page
 
             // select the new page
-            Page nextPage;
-            if (!this.Pages.TryGetValue(pageType, out nextPage))
+            if (!this.Pages.TryGetValue(pageType, out var nextPage))
                 throw new KeyNotFoundException($"The given page \"{pageType}\" was not present in the program");
 
             // enter the new page
-            this.History.Push(nextPage);
+            this.History.Push(nextPage.Value);
 
             return this.CurrentPage as T;
         }

@@ -15,11 +15,11 @@ namespace EasyConsole.Core.Plus
 
         public void Display()
         {
-            for (int i = 0; i < this.Options.Count; i++)
+            for (var i = 0; i < this.Options.Count; i++)
             {
                 Console.WriteLine("{0}. {1}", i + 1, this.Options[i].Name);
             }
-            int choice = Input.ReadInt("Choose an option:", min: 1, max: this.Options.Count);
+            var choice = Input.ReadInt("Choose an option:", min: 1, max: this.Options.Count);
 
             this.Options[choice - 1].Callback();
         }
