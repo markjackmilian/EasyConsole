@@ -81,7 +81,8 @@ namespace EasyConsole.Core.Plus
                 return this.CurrentPage as T;
 
             // leave the current page
-
+            this.CurrentPage?.OnLeave();
+            
             // select the new page
             if (!this.Pages.TryGetValue(pageType, out var nextPage))
                 throw new KeyNotFoundException($"The given page \"{pageType}\" was not present in the program");

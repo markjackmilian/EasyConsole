@@ -48,6 +48,12 @@ namespace EasyConsole.Core.Plus
         }
 
 
-       
+        /// <summary>
+        /// Called when leaving a page
+        /// </summary>
+        public virtual void OnLeave()
+        {
+            
+        }
     }
 }
