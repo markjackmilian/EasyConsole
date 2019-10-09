@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace EasyConsole.Core.Plus
 {
@@ -41,6 +42,21 @@ namespace EasyConsole.Core.Plus
         {
             Output.DisplayPrompt(prompt);
             return Console.ReadLine();
+        }
+
+        /// <summary>
+        /// Select between a list of string
+        /// </summary>
+        /// <param name="strings"></param>
+        /// <returns></returns>
+        public static string ReadStrings(IEnumerable<string> strings)
+        {
+            string choice = null;
+            var menu = new Menu();
+            foreach (var value in strings)
+                menu.Add(value, () => { choice = value; });
+            menu.Display();
+            return choice;
         }
 
         public static TEnum ReadEnum<TEnum>(string prompt) where TEnum : struct, IConvertible, IComparable, IFormattable
