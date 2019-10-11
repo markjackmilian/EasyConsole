@@ -59,6 +59,24 @@ namespace EasyConsole.Core.Plus
             return choice;
         }
 
+        /// <summary>
+        /// Read object
+        /// </summary>
+        /// <param name="objects"></param>
+        /// <param name="title"></param>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public static T ReadObject<T>(IEnumerable<T> objects, Func<T, string> title = null)
+        {
+            var menu = new Menu();
+            var choice = default(T);
+            foreach (var value in objects)
+                menu.Add(title == null ? value.ToString() : title.Invoke(value), () => { choice = value; });
+            menu.Display();
+
+            return choice;
+        }
+
         public static TEnum ReadEnum<TEnum>(string prompt) where TEnum : struct, IConvertible, IComparable, IFormattable
         {
             var type = typeof(TEnum);
